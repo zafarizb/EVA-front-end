@@ -33,56 +33,53 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios'
 export default {
-  name: "login",
-  data() {
+  name: 'login',
+  data () {
     return {
       user: {
-        username: "",
-        email: "",
-        password: "",
-      },
-    };
+        username: '',
+        email: '',
+        password: ''
+      }
+    }
   },
-  created() {},
+  created () {},
   methods: {
-    doRegister() {
+    doRegister () {
       if (!this.user.username) {
-        this.$message.error("请输入用户名！");
-        return;
+        this.$message.error('请输入用户名！')
       } else if (!this.user.email) {
-        this.$message.error("请输入邮箱！");
-        return;
+        this.$message.error('请输入邮箱！')
       } else if (this.user.email != null) {
-        var reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+        var reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
         if (!reg.test(this.user.email)) {
-          this.$message.error("请输入有效的邮箱！");
+          this.$message.error('请输入有效的邮箱！')
         } else if (!this.user.password) {
-          this.$message.error("请输入密码！");
-          return;
+          this.$message.error('请输入密码！')
         } else {
           // this.$router.push({ path: "/" }); //无需向后台提交数据，方便前台调试
           axios
-            .post("//127.0.0.1:5000/Register", {
+            .post('//127.0.0.1:8000/user/Register', {
               username: this.user.username,
               email: this.user.email,
-              password: this.user.password,
+              password: this.user.password
             })
             .then((res) => {
-              console.log(res.data);
+              console.log(res.data)
               if (res.data.status == 1) {
-                alert("请您开始登录！");
-                this.$router.push({ path: "/" });
+                alert('请您开始登录！')
+                this.$router.push({ path: '/Login' })
               } else {
-                alert("您输入的用户名已存在！");
+                alert('您输入的用户名已存在！')
               }
-            });
+            })
         }
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

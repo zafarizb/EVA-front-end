@@ -7,15 +7,15 @@
 </template>
 
 <script>
-  // 会导入./AppHeader下面的index.vue组件
-  import AppHeader from "./AppHeader"
-  import AppNavbar from "./AppNavbar"
-  import AppMain from "./AppMain"
+// 会导入./AppHeader下面的index.vue组件
+import AppHeader from './AppHeader'
+import AppNavbar from './AppNavbar'
+import AppMain from './AppMain'
 
-  // 导入子组件，缩写格式 AppHeader: AppHeader
-  export default {
-    components: { AppHeader, AppNavbar, AppMain }  // 有s
-  };
+// 导入子组件，缩写格式 AppHeader: AppHeader
+export default {
+  components: { AppHeader, AppNavbar, AppMain } // 有s
+}
 </script>
 
 <style scoped>

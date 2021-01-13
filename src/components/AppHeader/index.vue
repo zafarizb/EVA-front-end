@@ -7,7 +7,6 @@
     </a>
   <!-- logo和文字结束 -->
 
-
   <!--  下拉菜单-->
 <el-dropdown @command="handleCommand"><!--  绑定指令,在methods里定义-->
     <span class="el-dropdown-link">
@@ -24,19 +23,18 @@
 </el-dropdown>
   <!--  下拉菜单结束-->
 
-
   </div>
 
 </template>
 
 <script>
-  export default {
-    methods: {
-      handleCommand(command){
-        this.$message(`点击了${command}`)
-      }
-    },
+export default {
+  methods: {
+    handleCommand (command) {
+      this.$message(`点击了${command}`)
+    }
   }
+}
 </script>
 
 <style scoped>

@@ -41,7 +41,6 @@
   </div>
 </template>
 
-
 <style scoped>
   /* 去掉右边框 */
   .el-menu {

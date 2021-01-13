@@ -38,47 +38,43 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios'
 export default {
-  name: "login",
-  data() {
+  name: 'login',
+  data () {
     return {
       user: {
-        username: "",
-        password: "",
-      },
-    };
+        username: '',
+        password: ''
+      }
+    }
   },
-  created() {},
+  created () {},
   methods: {
-    doLogin() {
+    doLogin () {
       if (!this.user.username) {
-        this.$message.error("请输入用户名！");
-        return;
+        this.$message.error('请输入用户名！')
       } else if (!this.user.password) {
-        this.$message.error("请输入密码！");
-        return;
+        this.$message.error('请输入密码！')
       } else {
-        //校验用户名和密码是否正确;
+        // 校验用户名和密码是否正确;
         axios
-          .post("//127.0.0.1:5000/", {
+          .post('//127.0.0.1:8000/user/Login', {
             username: this.user.username,
-            password: this.user.password,
+            password: this.user.password
           })
           .then((res) => {
-            console.log(res.data);
+            console.log(res.data)
             if (res.data.status == 0) {
-              this.$router.push({ path: "/Main" });
+              this.$router.push({ path: '/Main' })
+            } else {
+              alert('您输入的用户名或密码错误！')
             }
-            else {
-              alert("您输入的用户名或密码错误！");
-            }
-
-          });
+          })
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -12,15 +12,15 @@ import Other from '@/components/Other.vue'
 Vue.use(VueRouter)
 
 export default new VueRouter({
-  mode:"history",
+  mode: 'history',
   routes: [
     {
-      path: '/',
+      path: '/Login',
       name: 'Login',
       component: Login
     },
     {
-      path: "/Register",
+      path: '/Register',
       name: 'Register',
       component: Register
     },
@@ -31,15 +31,15 @@ export default new VueRouter({
     },
     {
       path: '/Main',
-      name: 'layout', // 路由名称
-      component: Layout , // 组件对象
-      // 因为视频分析、图像分析、关于等都是 Layout 下的 main 里的，所以要将这些组件作为 Layout 组件的子组件，使用children，里面是一个数组，接收一个个对象
-      // meta 是
+      name: 'layout', // 璺敱鍚嶇О
+      component: Layout, // 缁勪欢瀵硅薄
+      // 鍥犱负瑙嗛鍒嗘瀽銆佸浘鍍忓垎鏋愩�佸叧浜庣瓑閮芥槸 Layout 涓嬬殑 main 閲岀殑锛屾墍浠ヨ灏嗚繖浜涚粍浠朵綔涓� Layout 缁勪欢鐨勫瓙缁勪欢锛屼娇鐢╟hildren锛岄噷闈㈡槸涓�涓暟缁勶紝鎺ユ敹涓�涓釜瀵硅薄
+      // meta 鏄�
       children: [
         {
           path: '/Main',
           component: Main,
-          meta: {title: '首页'}
+          meta: {title: '棣栭〉'}
         }
       ]
     },
@@ -49,51 +49,47 @@ export default new VueRouter({
       component: Layout,
       children: [
         {
-          path: '/', // 等价于 /member/,请求 /member 时会在后面拼接个 / 因为AppNavbar下的index.vue写的是/member/
+          path: '/', // 绛変环浜� /member/,璇锋眰 /member 鏃朵細鍦ㄥ悗闈㈡嫾鎺ヤ釜 / 鍥犱负AppNavbar涓嬬殑index.vue鍐欑殑鏄�/member/
           component: Video,
-          meta: {title: '视频分析'}
+          meta: {title: '瑙嗛鍒嗘瀽'}
         }
       ]
     },
     {
       path: '/Page',
       component: Layout,
-      children:[
-          {
-            path: '/',
-            component: Page,
-            meta: {title: '图像分析'}
-          }
+      children: [
+        {
+          path: '/',
+          component: Page,
+          meta: {title: '鍥惧儚鍒嗘瀽'}
+        }
       ]
 
     },
     {
       path: '/About',
       component: Layout,
-      children:[
-          {
-            path: '/',
-            component: About,
-            meta: {title: '关于我们'}
-          }
+      children: [
+        {
+          path: '/',
+          component: About,
+          meta: {title: '鍏充簬鎴戜滑'}
+        }
       ]
 
     },
     {
       path: '/Other',
       component: Layout,
-      children:[
-          {
-            path: '/',
-            component: Other,
-            meta: {title: '待定功能'}
-          }
+      children: [
+        {
+          path: '/',
+          component: Other,
+          meta: {title: '寰呭畾鍔熻兘'}
+        }
       ]
 
     }
   ]
 })
-
-
-
-
