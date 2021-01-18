@@ -14,7 +14,7 @@ import AppMain from './AppMain'
 
 // 导入子组件，缩写格式 AppHeader: AppHeader
 export default {
-  components: { AppHeader, AppNavbar, AppMain } // 有s
+  components: { AppHeader, AppNavbar, AppMain } 
 }
 </script>
 

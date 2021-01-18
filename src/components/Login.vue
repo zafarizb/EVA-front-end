@@ -1,11 +1,10 @@
 <template>
-  <div class="login" clearfix>
+  <div class="login clearfix">
     <div class="login-wrap">
       <el-row type="flex" justify="center">
         <el-form
           ref="loginForm"
           :model="user"
-          :rules="rules"
           status-icon
           label-width="80px"
         >
@@ -26,10 +25,10 @@
             ></el-input>
           </el-form-item>
           <router-link to="/register">注册账号</router-link>
+          <router-link to="/change">修改密码</router-link>
           <el-form-item>
             <el-button type="primary" icon="el-icon-upload" @click="doLogin()"
-              >登 录</el-button
-            >
+              >登 录</el-button>
           </el-form-item>
         </el-form>
       </el-row>

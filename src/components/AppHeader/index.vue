@@ -1,37 +1,49 @@
 <template>
   <!-- logo和文字 -->
   <div class="header">
-    <a href="#/">   <!-- 点击进入首页 -->
+    <a href="#/">
+      <!-- 点击进入首页 -->
       <img class="logo" src="@/assets/logo.png" width="25px" />
       <span class="company">基于深度学习的360°视频流传输优化算法展示平台</span>
     </a>
-  <!-- logo和文字结束 -->
+    <!-- logo和文字结束 -->
 
-  <!--  下拉菜单-->
-<el-dropdown @command="handleCommand"><!--  绑定指令,在methods里定义-->
-    <span class="el-dropdown-link">
-      您好
-      <i class="el-icon-arrow-down el-icon--right"></i>
-    </span>
-    <el-dropdown-menu slot="dropdown">
+    <!--  下拉菜单-->
+    <el-dropdown @command="handleCommand"
+      ><!--  绑定指令,在methods里定义-->
+      <span class="el-dropdown-link">
+        您好
+        <i class="el-icon-arrow-down el-icon--right"></i>
+      </span>
+      <el-dropdown-menu slot="dropdown">
         <!-- icon是修改图标 ，command是点击后传给方法的值-->
-      <el-dropdown-item icon="el-icon-edit" command="edit">>修改密码</el-dropdown-item>
+        <el-dropdown-item icon="el-icon-edit" command="edit"
+          >>修改密码</el-dropdown-item
+        >
 
-      <el-dropdown-item icon="el-icon-s-operation" command="quit">>退出登录</el-dropdown-item>
-
-    </el-dropdown-menu>
-</el-dropdown>
-  <!--  下拉菜单结束-->
-
+        <el-dropdown-item icon="el-icon-s-operation" command="quit"
+          >>退出登录</el-dropdown-item
+        >
+      </el-dropdown-menu>
+    </el-dropdown>
+    <!--  下拉菜单结束-->
   </div>
-
 </template>
 
 <script>
 export default {
   methods: {
     handleCommand (command) {
-      this.$message(`点击了${command}`)
+      switch (command) {
+        case 'edit':
+          console.log('修改密码')
+          this.$router.push('/change')
+          break
+        case 'quit':
+          console.log('退出登录')
+          this.$router.push('/login')
+          break
+      }
     }
   }
 }
@@ -51,13 +63,13 @@ export default {
 }
 
 /* 下拉菜单 */
-.el-dropdown{
-    float: right; /* 浮动在右边 */
-    margin-right: 40px; /* 靠右40px */
+.el-dropdown {
+  float: right; /* 浮动在右边 */
+  margin-right: 40px; /* 靠右40px */
 }
 /* 系统管理 */
-.el-dropdown-link{
-    color: white;
-    cursor: pointer; /* 鼠标放上去是手的形状 */
+.el-dropdown-link {
+  color: white;
+  cursor: pointer; /* 鼠标放上去是手的形状 */
 }
 </style>

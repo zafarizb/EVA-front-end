@@ -8,6 +8,8 @@ import Video from '@/components/Video.vue'
 import Page from '@/components/Page.vue'
 import About from '@/components/About.vue'
 import Other from '@/components/Other.vue'
+import Change from '@/components/Change.vue'
+import Load from '@/components/Load.vue'
 
 Vue.use(VueRouter)
 
@@ -25,16 +27,19 @@ export default new VueRouter({
       component: Register
     },
     {
+      path: '/Change',
+      name: Change,
+      component:Change
+    },
+    {
       path: '/Layout',
       name: 'Layout',
       component: Layout
     },
     {
       path: '/Main',
-      name: 'layout', // 璺敱鍚嶇О
-      component: Layout, // 缁勪欢瀵硅薄
-      // 鍥犱负瑙嗛鍒嗘瀽銆佸浘鍍忓垎鏋愩�佸叧浜庣瓑閮芥槸 Layout 涓嬬殑 main 閲岀殑锛屾墍浠ヨ灏嗚繖浜涚粍浠朵綔涓� Layout 缁勪欢鐨勫瓙缁勪欢锛屼娇鐢╟hildren锛岄噷闈㈡槸涓�涓暟缁勶紝鎺ユ敹涓�涓釜瀵硅薄
-      // meta 鏄�
+      name: 'layout', 
+      component: Layout,
       children: [
         {
           path: '/Main',
@@ -43,15 +48,14 @@ export default new VueRouter({
         }
       ]
     },
-
     {
       path: '/Video',
       component: Layout,
       children: [
         {
-          path: '/', // 绛変环浜� /member/,璇锋眰 /member 鏃朵細鍦ㄥ悗闈㈡嫾鎺ヤ釜 / 鍥犱负AppNavbar涓嬬殑index.vue鍐欑殑鏄�/member/
+          path: '/',
           component: Video,
-          meta: {title: '瑙嗛鍒嗘瀽'}
+          meta: {title: '视频分析'}
         }
       ]
     },
@@ -62,10 +66,9 @@ export default new VueRouter({
         {
           path: '/',
           component: Page,
-          meta: {title: '鍥惧儚鍒嗘瀽'}
+          meta: {title: '图像分析'}
         }
       ]
-
     },
     {
       path: '/About',
@@ -74,10 +77,9 @@ export default new VueRouter({
         {
           path: '/',
           component: About,
-          meta: {title: '鍏充簬鎴戜滑'}
+          meta: {title: '关于我们'}
         }
       ]
-
     },
     {
       path: '/Other',
@@ -86,10 +88,20 @@ export default new VueRouter({
         {
           path: '/',
           component: Other,
-          meta: {title: '寰呭畾鍔熻兘'}
+          meta: {title: '待定功能'}
         }
       ]
-
+    },
+    {
+      path: '/Load',
+      component: Layout,
+      children: [
+        {
+          path: '/',
+          component: Load,
+          meta: {title: '上传下载'}
+        }
+      ]
     }
   ]
 })
