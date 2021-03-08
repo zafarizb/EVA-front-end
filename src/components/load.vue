@@ -15,16 +15,12 @@
         :file-list="fileList"
       >
         <el-button size="big" type="primary">点击上传</el-button>
-        <div slot="tip" class="el-upload__tip">
-          只能上传jpg/png文件，且不超过500kb
-        </div>
       </el-upload>
     </div>
     <div class="download">
       <el-button size="big" type="primary" @click="download_file"
         >点击下载</el-button
       >
-      <div slot="tip" class="el-download__tip">从服务器下载分析结果</div>
     </div>
   </div>
 </template>
