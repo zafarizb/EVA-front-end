@@ -4,7 +4,7 @@
     <a href="#/">
       <!-- 点击进入首页 -->
       <img class="logo" src="@/assets/logo.png" width="25px" />
-      <span class="company">基于深度学习的360°视频流传输优化算法展示平台</span>
+      <span class="company">边缘视频分析原型系统</span>
     </a>
     <!-- logo和文字结束 -->
 

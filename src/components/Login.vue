@@ -65,6 +65,7 @@ export default {
           .then((res) => {
             console.log(res.data)
             if (res.data.status == 0) {
+              sessionStorage.setItem('accessToken', res.data.session)
               this.$router.push({ path: '/Main' })
             } else {
               alert('您输入的用户名或密码错误！')

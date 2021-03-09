@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p style="float: left">图像分析</p>
+    <p style="float: left">图像分析任务列表</p>
     <div class="tab-container">
       <el-button
         type="primary"
@@ -114,10 +114,13 @@ export default {
       //创建接口
       methods: "get", //类型为get请求
       url: "//127.0.0.1:8000/image", //请求的接口地址
+      params:{
+        userid: sessionStorage.getItem('accessToken')
+      }
     }).then(function (response) {
       //请求成功返回
       _this.tableData = response.data.tableData; //数据打包，打包在data中创建的数组 我这里是focus数组
-      // console.log(response.data)
+      console.log(response.data)
     });
   },
 };
