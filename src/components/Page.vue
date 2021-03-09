@@ -36,8 +36,8 @@
           </el-form-item>
           <el-form-item label="执行模型" :prop="model">
             <el-select v-model="form.model" placeholder="请选择模型">
-              <el-option label="模型一" value="ssd"></el-option>
-              <el-option label="模型二" value="faster_rcnn"></el-option>
+              <el-option label="ssd" value="1"></el-option>
+              <el-option label="faster_rcnn" value="2"></el-option>
             </el-select>
           </el-form-item>
         </el-form>
@@ -81,6 +81,7 @@
 
 <script>
 export default {
+    inject:['reload'],
   methods: {
     handleClick(index, row) {
       console.log(index, row);
@@ -94,12 +95,15 @@ export default {
         .then(() => {
           var name = this.tableData[index].name;
           console.log(name);
-          this.axios
-            .post("//127.0.0.1:8000/image", this.$qs.stringify({ name: name }))
+          this.$axios
+            .post("//127.0.0.1:8000/image/delete", {
+                name: name,
+                userid: sessionStorage.getItem("accessToken"),
+            })
             .then((res) => res.data)
             .then((data) => {
               console.log(data);
-              if (data.status == 0) {
+              if (data.status == 1) {
                 this.tableData.splice(index, 1);
                 this.$message({
                   type: "success",
@@ -123,16 +127,17 @@ export default {
       } else if (!this.form.file) {
         this.$message.error("请选择文件！");
       } else {
-        axios
-          .post("//127.0.0.1:8000/image", {
+        this.$axios
+          .post('//127.0.0.1:8000/image/create', {
             name: this.form.name,
             file: this.form.file,
             model: this.form.model,
+            userid: sessionStorage.getItem("accessToken"),
           })
           .then((res) => {
             console.log(res.data);
-            if (res.data.status == 0) {
-              this.tableData = res.data.tableData;
+            if (res.data.status == 1) {
+              this.reload();
               alert("添加任务成功！");
             } else {
               alert("添加任务失败！");
@@ -144,22 +149,6 @@ export default {
   data() {
     return {
       tableData: [
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          province: "上海",
-          city: "普陀区",
-          address: "上海市普陀区金沙江路 1518 弄",
-          zip: 200333,
-        },
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          province: "上海",
-          city: "普陀区",
-          address: "上海市普陀区金沙江路 1518 弄",
-          zip: 200333,
-        },
       ],
       tableOption: [
         { label: "C://user//image//page1", key: "图像1" },
