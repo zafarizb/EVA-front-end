@@ -10,6 +10,7 @@ import About from '@/components/About.vue'
 import Other from '@/components/Other.vue'
 import Change from '@/components/Change.vue'
 import Load from '@/components/Load.vue'
+import PageContent from '@/components/PageContent.vue'
 
 Vue.use(VueRouter)
 
@@ -38,7 +39,7 @@ export default new VueRouter({
     },
     {
       path: '/Main',
-      name: 'layout', 
+      name: 'layout',
       component: Layout,
       children: [
         {
@@ -67,6 +68,17 @@ export default new VueRouter({
           path: '/',
           component: Page,
           meta: {title: '图像分析'}
+        }
+      ]
+    },
+    {
+      path: '/Page/:name',
+      component: Layout,
+      children: [
+        {
+          path: '/',
+          component: PageContent,
+          meta: {title: '图像信息'}
         }
       ]
     },

@@ -59,10 +59,7 @@
         </el-table-column>
         <el-table-column prop="action" label="操作">
           <template slot-scope="scope">
-            <el-button
-              @click="handleClick(scope.$index, scope.row)"
-              type="text"
-              size="small"
+            <el-button @click="infocheck(scope.$index)" type="text" size="small"
               >查看详情</el-button
             >
             <el-button
@@ -81,10 +78,11 @@
 
 <script>
 export default {
-    inject:['reload'],
+  inject: ["reload"],
   methods: {
-    handleClick(index, row) {
-      console.log(index, row);
+    infocheck(index) {
+      var name = this.tableData[index].name;
+      this.$router.push("/Page/" + name);//实现对应文件名路由跳转
     },
     deletePro(index) {
       this.$confirm("确定删除这条任务吗？", {
@@ -97,8 +95,8 @@ export default {
           console.log(name);
           this.$axios
             .post("//127.0.0.1:8000/image/delete", {
-                name: name,
-                userid: sessionStorage.getItem("accessToken"),
+              name: name,
+              userid: sessionStorage.getItem("accessToken"),
             })
             .then((res) => res.data)
             .then((data) => {
@@ -128,7 +126,7 @@ export default {
         this.$message.error("请选择文件！");
       } else {
         this.$axios
-          .post('//127.0.0.1:8000/image/create', {
+          .post("//127.0.0.1:8000/image/create", {
             name: this.form.name,
             file: this.form.file,
             model: this.form.model,
@@ -149,6 +147,22 @@ export default {
   data() {
     return {
       tableData: [
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          province: "上海",
+          city: "普陀区",
+          address: "上海市普陀区金沙江路 1518 弄",
+          zip: 200333,
+        },
+        {
+          date: "2016-05-02",
+          name: "王小龙",
+          province: "上海",
+          city: "普陀区",
+          address: "上海市普陀区金沙江路 1518 弄",
+          zip: 200333,
+        },
       ],
       tableOption: [
         { label: "C://user//image//page1", key: "图像1" },

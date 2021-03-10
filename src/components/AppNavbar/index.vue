@@ -16,36 +16,36 @@
       <!-- 首页  class就是对应的icon -->
       <el-menu-item index="/Main">
         <i class="el-icon-menu"></i>
-        <span slot="title">首页</span>
+        <span slot="title">系统首页</span>
       </el-menu-item>
 
       <!-- 视频分析-->
       <el-menu-item index="/Video">
-        <i class="el-icon-s-custom"></i>
+        <i class="el-icon-video-camera"></i>
         <span slot="title">视频分析</span>
       </el-menu-item>
 
       <!-- 图像分析 -->
       <el-menu-item index="/Page">
-        <i class="el-icon-menu"></i>
+        <i class="el-icon-picture-outline"></i>
         <span slot="title">图像分析</span>
       </el-menu-item>
 
       <!-- 上传下载 -->
       <el-menu-item index="/load">
-        <i class="el-icon-user"></i>
+        <i class="el-icon-folder-opened"></i>
         <span slot="title">上传下载</span>
       </el-menu-item>
 
       <!-- 关于我们 -->
       <el-menu-item index="/About">
-        <i class="el-icon-suitcase-1"></i>
+        <i class="el-icon-user-solid"></i>
         <span slot="title">关于我们</span>
       </el-menu-item>
 
       <!-- 待定功能 -->
       <el-menu-item index="/Other">
-        <i class="el-icon-user"></i>
+        <i class="el-icon-more"></i>
         <span slot="title">待定功能</span>
       </el-menu-item>
     </el-menu>
