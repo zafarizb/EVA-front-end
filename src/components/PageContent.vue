@@ -73,7 +73,7 @@ export default {
       url: "http://127.0.0.1:8080/image/?",
       responseType: "arraybuffer", // 最为关键
     }).then(function (response) {
-      that.picurl =
+      this.picurl =
         "data:image/jpeg;base64," + this.arrayBufferToBase64(response.data);
     });
   },
