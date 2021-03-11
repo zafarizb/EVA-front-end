@@ -53,29 +53,33 @@ export default {
   },
   created: function () {
     var _this = this;
-    //请求信息
-    this.$axios({
-      //创建接口
-      methods: "get", //类型为get请求
-      url: "//127.0.0.1:8000/image/?", //请求的接口地址
-      params: {
-        url: this.route.path,
-        userid: sessionStorage.getItem("accessToken"),
-      },
-    }).then(function (response) {
-      //请求成功返回
-      _this.tableData = response.data.tableData; //数据打包，打包在data中创建的数组
-      console.log(response.data);
-    });
-    //请求图片
-    this.$axios({
-      method: "get",
-      url: "http://127.0.0.1:8080/image/?",
-      responseType: "arraybuffer", // 最为关键
-    }).then(function (response) {
-      this.picurl =
-        "data:image/jpeg;base64," + this.arrayBufferToBase64(response.data);
-    });
+    try {
+      //请求信息
+      this.$axios({
+        //创建接口
+        methods: "get", //类型为get请求
+        url: "//127.0.0.1:8000/image/?", //请求的接口地址
+        params: {
+          url: this.$route.path,
+          userid: sessionStorage.getItem("accessToken"),
+        },
+      }).then(function (response) {
+        //请求成功返回
+        _this.tableData = response.data.tableData; //数据打包，打包在data中创建的数组
+        console.log(response.data);
+      });
+      //请求图片
+      this.$axios({
+        method: "get",
+        url: "http://127.0.0.1:8080/image/?",
+        responseType: "arraybuffer", // 最为关键
+      }).then(function (response) {
+        _this.picurl =
+          "data:image/jpeg;base64," + this.arrayBufferToBase64(response.data);
+      });
+    } catch (e) {
+      console.error(e);
+    }
   },
 };
 </script>

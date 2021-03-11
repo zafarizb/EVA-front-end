@@ -2,7 +2,6 @@
   <div id="app">
     <div id="nav"></div>
     <router-view v-if="isRouterAlive"></router-view>
-    <router-view />
   </div>
 </template>
 <script>
@@ -35,7 +34,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
 }
 * {
   padding: 0;
@@ -44,7 +43,7 @@ export default {
 html,
 body {
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 #app {
   height: 100%;

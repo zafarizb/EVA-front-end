@@ -149,7 +149,7 @@ export default {
       tableData: [
         {
           date: "2016-05-03",
-          name: "王小虎",
+          name: "ttt",
           province: "上海",
           city: "普陀区",
           address: "上海市普陀区金沙江路 1518 弄",
@@ -157,7 +157,7 @@ export default {
         },
         {
           date: "2016-05-02",
-          name: "王小龙",
+          name: "zzz",
           province: "上海",
           city: "普陀区",
           address: "上海市普陀区金沙江路 1518 弄",

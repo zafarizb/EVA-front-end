@@ -2,12 +2,7 @@
   <div class="login clearfix">
     <div class="login-wrap">
       <el-row type="flex" justify="center">
-        <el-form
-          ref="loginForm"
-          :model="user"
-          status-icon
-          label-width="80px"
-        >
+        <el-form ref="loginForm" :model="user" status-icon label-width="80px">
           <h3>登录</h3>
           <hr />
           <el-form-item prop="username" label="用户名">
@@ -28,7 +23,8 @@
           <router-link to="/change">修改密码</router-link>
           <el-form-item>
             <el-button type="primary" icon="el-icon-upload" @click="doLogin()"
-              >登 录</el-button>
+              >登 录</el-button
+            >
           </el-form-item>
         </el-form>
       </el-row>
@@ -37,58 +33,62 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
-  name: 'login',
-  data () {
+  name: "login",
+  data() {
     return {
       user: {
-        username: '',
-        password: ''
-      }
-    }
+        username: "",
+        password: "",
+      },
+    };
   },
-  created () {},
+  created() {},
   methods: {
-    doLogin () {
+    doLogin() {
       if (!this.user.username) {
-        this.$message.error('请输入用户名！')
+        this.$message.error("请输入用户名！");
       } else if (!this.user.password) {
-        this.$message.error('请输入密码！')
+        this.$message.error("请输入密码！");
       } else {
         // 校验用户名和密码是否正确;
         axios
-          .post('//127.0.0.1:8000/user/Login', {
+          .post("//127.0.0.1:8000/user/Login", {
             username: this.user.username,
-            password: this.user.password
+            password: this.user.password,
           })
           .then((res) => {
-            console.log(res.data)
+            console.log(res.data);
             if (res.data.status == 0) {
-              sessionStorage.setItem('accessToken', res.data.session)
-              this.$router.push({ path: '/Main' })
+              sessionStorage.setItem("accessToken", res.data.session);
+              this.$router.push({ path: "/Main" });
             } else {
-              alert('您输入的用户名或密码错误！')
+              alert("您输入的用户名或密码错误！");
             }
-          })
+          });
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .login {
   width: 100%;
-  height: 740px;
+  height: 100%;
+  /* height: 740px; */
+  display: flex;
+  align-items: center;
   overflow: hidden;
 }
 .login-wrap {
   background-size: cover;
-  width: 400px;
-  height: 300px;
-  margin: 215px auto;
+  /* width: 400px; */
+  /* height: 300px; */
+  /* margin: 215px auto; */
+  width: 100%;
   overflow: hidden;
   padding-top: 10px;
   line-height: 40px;

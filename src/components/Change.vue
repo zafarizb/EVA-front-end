@@ -97,16 +97,18 @@ export default {
 <style scoped>
 .login {
   width: 100%;
-  height: 740px;
+  height: 100%;
+  /* height: 740px; */
+  display: flex;
+  align-items: center;
   overflow: hidden;
 }
 .login-wrap {
-  width: 400px;
-  height: 400px;
-  margin: 215px auto;
+  background-size: cover;
+  width: 100%;
   overflow: hidden;
   padding-top: 10px;
-  line-height: 20px;
+  line-height: 40px;
 }
 
 h3 {
