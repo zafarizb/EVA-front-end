@@ -78,7 +78,7 @@ export default new VueRouter({
         {
           path: '/',
           component: PageContent,
-          meta: {title: '图像信息'}
+          meta: {title: '图像分析任务信息'}
         }
       ]
     },
