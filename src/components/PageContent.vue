@@ -1,9 +1,13 @@
 
 <template>
   <div>
+    <el-page-header @back="goBack" content="图片详情"> </el-page-header>
+    <br></br>
     <el-table :data="tableData" border:ture border style="width: 100%">
-      <el-table-column prop="info" label="图像分析任务信息"> </el-table-column>
+      <el-table-column prop="info" label="图像分析任务信息与结果"> </el-table-column>
     </el-table>
+    <br></br>
+    <br></br>
     <div class="demo-image">
       <img :src="picurl" alt="page" />
     </div>
@@ -12,26 +16,23 @@
 
 <script>
 export default {
+  methods: {
+    goBack() {
+      console.log("go back");
+      this.$router.push({ path: "/Page" });
+    },
+  },
   data() {
     return {
       tableData: [
         {
-          info: "任务名称: ttt",
+          info: "任务名称: ttt 任务创建时间：",
         },
         {
-          info: "任务状态：完成",
+          info: "任务状态：完成 文件名:",
         },
         {
-          info: "执行模型：",
-        },
-        {
-          info: "文件名:",
-        },
-        {
-          info: "任务创建时间：",
-        },
-        {
-          info: "任务完成时间：",
+          info: "执行模型:   任务完成时间：",
         },
       ],
       picurl: "", //图片url
@@ -63,8 +64,7 @@ export default {
           userid: sessionStorage.getItem("accessToken"),
         },
       }).then(function (response) {
-        _this.picurl =
-          "data:image/jpeg;base64," + response.data;
+        _this.picurl = "data:image/jpeg;base64," + response.data;
       });
     } catch (e) {
       console.error(e);

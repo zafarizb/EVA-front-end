@@ -29,8 +29,8 @@ export default new VueRouter({
     },
     {
       path: '/Change',
-      name: Change,
-      component:Change
+      name: 'Change',
+      component: Change
     },
     {
       path: '/Layout',
@@ -45,7 +45,7 @@ export default new VueRouter({
         {
           path: '/Main',
           component: Main,
-          meta: {title: '棣栭〉'}
+          meta: {title: '首页'}
         }
       ]
     },
