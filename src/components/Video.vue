@@ -20,11 +20,11 @@
           <el-form-item label="任务名称" prop="name">
             <el-input v-model="form.name" autocomplete="off"></el-input>
           </el-form-item>
-          <el-form-item label="任务文件" :prop="file">
+          <el-form-item label="任务文件夹" :prop="file">
             <el-select
               v-model="form.file"
               class="filter-item"
-              placeholder="请选择文件"
+              placeholder="请选择文件夹"
             >
               <el-option
                 v-for="item in tableOption"
@@ -38,6 +38,15 @@
             <el-select v-model="form.model" placeholder="请选择模型">
               <el-option label="ssd" value="1"></el-option>
               <el-option label="faster_rcnn" value="2"></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="模型划分点" :prop="pl">
+            <el-select v-model="form.pl" placeholder="请选择模型划分点">
+              <el-option label="不执行" value="0"></el-option>
+              <el-option label="划分点1" value="1"></el-option>
+              <el-option label="划分点2" value="2"></el-option>
+              <el-option label="划分点3" value="3"></el-option>
+              <el-option label="划分点4" value="4"></el-option>
             </el-select>
           </el-form-item>
         </el-form>
@@ -81,7 +90,8 @@ export default {
   inject: ["reload"],
   methods: {
     infocheck(index) {
-
+      var name = this.tableData[index].name;
+      this.$router.push("/Video/" + name);//实现对应文件名路由跳转
     },
     deletePro(index) {
       this.$confirm("确定删除这条任务吗？", {
@@ -122,13 +132,16 @@ export default {
       } else if (!this.form.model) {
         this.$message.error("请选择模型！");
       } else if (!this.form.file) {
-        this.$message.error("请选择文件！");
+        this.$message.error("请选择文件夹！");
+      } else if (!this.form.pl) {
+        this.$message.error("请选择模型划分点！");
       } else {
         this.$axios
           .post("//127.0.0.1:8000/video/create", {
             name: this.form.name,
             file: this.form.file,
             model: this.form.model,
+            pl: this.form.pl,
             userid: sessionStorage.getItem("accessToken"),
           })
           .then((res) => {

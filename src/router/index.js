@@ -11,6 +11,7 @@ import Other from '@/components/Other.vue'
 import Change from '@/components/Change.vue'
 import Load from '@/components/Load.vue'
 import PageContent from '@/components/PageContent.vue'
+import VideoContent from '@/components/VideoContent.vue'
 
 Vue.use(VueRouter)
 
@@ -57,6 +58,17 @@ export default new VueRouter({
           path: '/',
           component: Video,
           meta: {title: '视频分析'}
+        }
+      ]
+    },
+    {
+      path: '/Video/:name',
+      component: Layout,
+      children: [
+        {
+          path: '/',
+          component: VideoContent,
+          meta: {title: '视频分析任务信息'}
         }
       ]
     },

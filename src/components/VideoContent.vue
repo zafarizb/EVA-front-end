@@ -4,8 +4,9 @@
     <el-page-header @back="goBack" content=""> </el-page-header>
     <br></br>
     <el-table :data="tableData" border:ture border style="width: 100%">
-      <el-table-column prop="info" label="图像分析任务信息与结果"> </el-table-column>
+      <el-table-column prop="info" label="视频分析任务信息与结果"> </el-table-column>
     </el-table>
+    <br></br>
     <br></br>
     <div class="demo-image">
       <img :src="picurl" alt="page" />
@@ -18,7 +19,7 @@ export default {
   methods: {
     goBack() {
       console.log("go back");
-      this.$router.push({ path: "/Page" });
+      this.$router.push({ path: "/Video" });
     },
   },
   data() {
@@ -44,7 +45,7 @@ export default {
       this.$axios({
         //创建接口
         methods: "get", //类型为get请求
-        url: "//127.0.0.1:8000/image/detail", //请求的接口地址
+        url: "//127.0.0.1:8000/video/detail", //请求的接口地址
         params: {
           url: this.$route.path,
           userid: sessionStorage.getItem("accessToken"),
@@ -55,16 +56,7 @@ export default {
         console.log(response.data);
       });
       //请求图片
-      this.$axios({
-        method: "get",
-        url: "http://127.0.0.1:8000/image/getPic",
-        params: {
-          url: this.$route.path,
-          userid: sessionStorage.getItem("accessToken"),
-        },
-      }).then(function (response) {
-        _this.picurl = "data:image/jpeg;base64," + response.data;
-      });
+      
     } catch (e) {
       console.error(e);
     }
