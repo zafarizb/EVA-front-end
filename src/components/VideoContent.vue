@@ -7,7 +7,6 @@
       <el-table-column prop="info" label="视频分析任务信息与结果"> </el-table-column>
     </el-table>
     <br></br>
-    <br></br>
     <div class="demo-image">
       <img :src="picurl" alt="page" />
     </div>
@@ -56,7 +55,7 @@ export default {
         console.log(response.data);
       });
       //请求图片
-      
+
     } catch (e) {
       console.error(e);
     }

@@ -39,8 +39,14 @@
 
       <!-- 关于我们 -->
       <el-menu-item index="/About">
-        <i class="el-icon-user-solid"></i>
+        <i class="el-icon-info"></i>
         <span slot="title">关于我们</span>
+      </el-menu-item>
+
+      <!-- 个人信息 -->
+      <el-menu-item index="/User">
+        <i class="el-icon-user-solid"></i>
+        <span slot="title">个人信息</span>
       </el-menu-item>
 
       <!-- 待定功能 -->

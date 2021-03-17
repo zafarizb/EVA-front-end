@@ -18,10 +18,9 @@
           允许上传jpg/png和zip格式文件
         </div>
       </el-upload>
-
       <el-button
+        class="download-demo"
         type="primary"
-        style="float: right"
         @click="dialogFormVisible = true"
         >下载任务结果</el-button
       >
@@ -89,11 +88,11 @@ export default {
       tableData: [
         {
           date: "2016-05-03",
-          name: "ttt",
-          province: "上海",
-          city: "普陀区",
-          address: "上海市普陀区金沙江路 1518 弄",
-          zip: 200333,
+          name: "ttt.zip",
+        },
+        {
+          date: "2016-05-03",
+          name: "ttt.png",
         },
       ],
       tableOption: [
@@ -120,12 +119,13 @@ export default {
       FormDatas.append("file", file);
       console.log(FormDatas);
       let that = this;
-      that.$axios({
-            method:'post',
-            url:"//127.0.0.1:8000/file/upload",   //  二次接口
-            headers:{'Content-Type': 'multipart/form-data'},
-            data:FormDatas
-          })
+      that
+        .$axios({
+          method: "post",
+          url: "//127.0.0.1:8000/file/upload", //  二次接口
+          headers: { "Content-Type": "multipart/form-data" },
+          data: FormDatas,
+        })
         .then(function (res) {
           if (res.data.status == 1) {
             that.$message.success(res.data.msg);
@@ -137,27 +137,33 @@ export default {
     //下载
     download(index) {
       var filename = this.tableData[index].name;
-      let that = this;
-      this.$axios({
-        method: "get",
-        url: "//127.0.0.1:8000/file/download",
-        responseType: "blob",
-        params: {
-          name: filename,
-          userid: sessionStorage.getItem("accessToken"),
-        },
-      }).then(function (res) {
-        let result = res.data;
-        let url = window.URL.createObjectURL(new Blob([result])); //处理文档流
-        let link = document.createElement("a");
-        link.href = url;
+      if (filename.indexOf("zip") >= 0) {
+        this.$message("zip文件请点击右上角下载");
+      } else {
+        let that = this;
+        this.$axios({
+          method: "get",
+          url: "//127.0.0.1:8000/file/download",
+          responseType: "blob",
+          params: {
+            name: filename,
+            userid: sessionStorage.getItem("accessToken"),
+          },
+        })
+          .then(function (res) {
+            let result = res.data;
+            let url = window.URL.createObjectURL(new Blob([result])); //处理文档流
+            let link = document.createElement("a");
+            link.href = url;
 
-        link.download = filename;
-        document.body.appendChild(link);
-        link.click();
-      }).catch(function (error) {
-        that.$message.error(error);
-      });
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+          })
+          .catch(function (error) {
+            that.$message.error(error);
+          });
+      }
     },
     deletePro(index) {
       this.$confirm("确定删除该文件吗？", {
@@ -206,18 +212,20 @@ export default {
             name: filename,
             userid: sessionStorage.getItem("accessToken"),
           },
-        }).then(function (res) {
-          let result = res.data;
-          let url = window.URL.createObjectURL(new Blob([result])); //处理文档流
-          let link = document.createElement("a");
-          link.href = url;
+        })
+          .then(function (res) {
+            let result = res.data;
+            let url = window.URL.createObjectURL(new Blob([result])); //处理文档流
+            let link = document.createElement("a");
+            link.href = url;
 
-          link.download = filename + '.zip';
-          document.body.appendChild(link);
-          link.click();
-        }).catch(function (error) {
-          that.$message.error(error);
-        });
+            link.download = filename + ".zip";
+            document.body.appendChild(link);
+            link.click();
+          })
+          .catch(function (error) {
+            that.$message.error(error);
+          });
       }
     },
   },
@@ -241,7 +249,14 @@ export default {
 </script>
 <style scoped>
 .upload {
-  padding-left: 1100px;
+  /* padding-left: 1100px; */
+  float: right;
   padding-top: 0px;
+  display: inline-flex;
+  align-items: baseline;
+}
+.upload-demo {
+  padding-right: 0px;
+  display: inline-block;
 }
 </style>

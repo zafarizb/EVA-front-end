@@ -1,3 +1,3 @@
 <template>
-    <div>Other</div>
+    <div>待定功能</div>
 </template>

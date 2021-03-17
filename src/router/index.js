@@ -7,11 +7,12 @@ import Main from '@/components/Main.vue'
 import Video from '@/components/Video.vue'
 import Page from '@/components/Page.vue'
 import About from '@/components/About.vue'
-import Other from '@/components/Other.vue'
+import User from '@/components/User.vue'
 import Change from '@/components/Change.vue'
 import Load from '@/components/Load.vue'
 import PageContent from '@/components/PageContent.vue'
 import VideoContent from '@/components/VideoContent.vue'
+import Other from '@/components/Other.vue'
 
 Vue.use(VueRouter)
 
@@ -102,6 +103,17 @@ export default new VueRouter({
           path: '/',
           component: About,
           meta: {title: '关于我们'}
+        }
+      ]
+    },
+    {
+      path: '/User',
+      component: Layout,
+      children: [
+        {
+          path: '/',
+          component: User,
+          meta: {title: '个人信息'}
         }
       ]
     },
