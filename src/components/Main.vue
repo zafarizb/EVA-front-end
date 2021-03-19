@@ -6,9 +6,9 @@
         <el-card>
           <img src="../assets/investor.png" class="image">
           <div style="padding: 14px;">
-            <span>用户</span>
+            <span>40%</span>
             <div class="bottom clearfix">
-              <small>展示当前用户数目</small>
+              <small>您的用户资料完整度</small>
             </div>
           </div>
         </el-card>
@@ -17,9 +17,9 @@
         <el-card>
           <img src="../assets/investment.png" class="image">
           <div style="padding: 14px;">
-            <span>功能</span>
+            <span>3</span>
             <div class="bottom clearfix">
-              <small>展示系统功能</small>
+              <small>您创建的任务数量</small>
             </div>
           </div>
         </el-card>
@@ -28,9 +28,9 @@
         <el-card>
           <img src="../assets/liuliang.png" class="image">
           <div style="padding: 14px;">
-            <span>平台</span>
+            <span>100%</span>
             <div class="bottom clearfix">
-              <small>展示该系统依赖平台</small>
+              <small>您的任务完成率</small>
             </div>
           </div>
         </el-card>
@@ -39,9 +39,9 @@
         <el-card>
           <img src="../assets/liuliang.png" class="image">
           <div style="padding: 14px;">
-            <span>其他</span>
+            <span>4.5%</span>
             <div class="bottom clearfix">
-              <small>其他待定模块</small>
+              <small>您的存储空间占用率</small>
             </div>
           </div>
         </el-card>
@@ -91,38 +91,38 @@ export default {
     return {
       tableData1: [
         {
-          notice: "校内天梯选拔赛开始报名啦！",
-          date1: "2020-3-6",
+          notice: "请各位完善个人信息！",
+          date1: "2021-3-18",
         },
         {
-          notice: "校内天梯选拔赛开始报名啦！",
-          date1: "2020-3-6",
+          notice: "视频分析模块使用说明",
+          date1: "2021-3-18",
         },
         {
-          notice: "校内天梯选拔赛开始报名啦！",
-          date1: "2020-3-6",
+          notice: "文件管理模块使用说明",
+          date1: "2021-3-18",
         },
         {
-          notice: "校内天梯选拔赛开始报名啦！",
-          date1: "2020-3-6",
+          notice: "本系统更新说明1.0",
+          date1: "2021-3-18",
         },
       ],
       tableData2: [
         {
-          msg: "校内天梯选拔赛开始报名啦！",
-          date2: "2020-3-6",
+          msg: "视频分析在新兴应用领域",
+          date2: "2021-3-18",
         },
         {
-          msg: "校内天梯选拔赛开始报名啦！",
-          date2: "2020-3-6",
+          msg: "视频分析简介",
+          date2: "2021-3-18",
         },
         {
-          msg: "校内天梯选拔赛开始报名啦！",
-          date2: "2020-3-6",
+          msg: "5G时代，把AI技术运用于视频分析",
+          date2: "2021-3-18",
         },
         {
-          msg: "校内天梯选拔赛开始报名啦！",
-          date2: "2020-3-6",
+          msg: "转发：5G时代下视频领域的应用探索及市场分析",
+          date2: "2021-3-18",
         },
       ],
     };

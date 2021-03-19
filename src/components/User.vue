@@ -14,19 +14,19 @@
       <el-input v-model="form.email" disabled="true"></el-input>
       </el-col>
     </el-form-item>
-    <el-form-item label="学院">
+    <el-form-item label="真实姓名">
       <el-col :span="11">
-      <el-input v-model="form.institute"></el-input>
-      </el-col>
-    </el-form-item>
-    <el-form-item label="学号">
-      <el-col :span="11">
-      <el-input v-model="form.id"></el-input>
+      <el-input placeholder="请输入您的真实姓名" v-model="form.realname"></el-input>
       </el-col>
     </el-form-item>
     <el-form-item label="手机号码">
       <el-col :span="11">
-      <el-input v-model="form.number"></el-input>
+      <el-input placeholder="请输入您的11位手机号码" v-model="form.number"></el-input>
+      </el-col>
+    </el-form-item>
+    <el-form-item label="所属单位">
+      <el-col :span="11">
+      <el-input placeholder="请输入您的所在单位" v-model="form.address"></el-input>
       </el-col>
     </el-form-item>
       <el-button type="primary" @click="onSubmit" dispaly="flex">立即修改</el-button>
@@ -41,8 +41,8 @@ export default {
       form: {
         name: "",
         email: "",
-        id: "",
-        institute: "",
+        address: "",
+        realname: "",
         number: "",
       },
     };
@@ -56,10 +56,10 @@ export default {
       })
         .then(() => {
           this.$axios
-            .post("//127.0.0.1:8000/user/detail", {
-              institue: this.form.institute,
+            .post("//127.0.0.1:8000/user/modify", {
+              address: this.form.address,
               number: this.form.number,
-              id: this.form.id,
+              realname: this.form.realname,
               userid: sessionStorage.getItem("accessToken"),
             })
             .then((res) => res.data)
@@ -93,11 +93,11 @@ export default {
       },
     }).then(function (response) {
       //请求成功返回
-      _this.form.name = response.data.name;
-      _this.form.id = response.data.id;
-      _this.form.email = response.data.email;
-      _this.form.institute = response.data.institute;
-      _this.form.number = response.data.number; //数据打包，打包在data
+      _this.form.name = response.data.data.name;
+      _this.form.address = response.data.data.address;
+      _this.form.email = response.data.data.email;
+      _this.form.realname = response.data.data.realname;
+      _this.form.number = response.data.data.phone; //数据打包，打包在data
       console.log(response.data);
     });
   },

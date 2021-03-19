@@ -61,7 +61,10 @@
         <el-table-column prop="date" label="创建时间" width="250">
         </el-table-column>
         <el-table-column prop="action" label="操作">
-          <template slot-scope="scope">
+          <template 
+            slot-scope="scope"
+            v-if="tableData[scope.$index].name.includes('.')"
+          >
             <el-button @click="download(scope.$index)" type="text" size="small"
               >下载文件</el-button
             >
@@ -137,33 +140,29 @@ export default {
     //下载
     download(index) {
       var filename = this.tableData[index].name;
-      if (filename.indexOf("zip") >= 0) {
-        this.$message("zip文件请点击右上角下载");
-      } else {
-        let that = this;
-        this.$axios({
-          method: "get",
-          url: "//127.0.0.1:8000/file/download",
-          responseType: "blob",
-          params: {
-            name: filename,
-            userid: sessionStorage.getItem("accessToken"),
-          },
-        })
-          .then(function (res) {
-            let result = res.data;
-            let url = window.URL.createObjectURL(new Blob([result])); //处理文档流
-            let link = document.createElement("a");
-            link.href = url;
+      let that = this;
+      this.$axios({
+        method: "get",
+        url: "//127.0.0.1:8000/file/download",
+        responseType: "blob",
+        params: {
+          name: filename,
+          userid: sessionStorage.getItem("accessToken"),
+        },
+      })
+        .then(function (res) {
+          let result = res.data;
+          let url = window.URL.createObjectURL(new Blob([result])); //处理文档流
+          let link = document.createElement("a");
+          link.href = url;
 
-            link.download = filename;
-            document.body.appendChild(link);
-            link.click();
-          })
-          .catch(function (error) {
-            that.$message.error(error);
-          });
-      }
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+        })
+        .catch(function (error) {
+          that.$message.error(error);
+        });
     },
     deletePro(index) {
       this.$confirm("确定删除该文件吗？", {

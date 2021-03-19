@@ -12,7 +12,7 @@
     <el-dropdown @command="handleCommand"
       ><!--  绑定指令,在methods里定义-->
       <span class="el-dropdown-link">
-        您好
+        您好，admin
         <i class="el-icon-arrow-down el-icon--right"></i>
       </span>
       <el-dropdown-menu slot="dropdown">

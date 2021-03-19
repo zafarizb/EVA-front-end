@@ -16,7 +16,7 @@
       <!-- 首页  class就是对应的icon -->
       <el-menu-item index="/Main">
         <i class="el-icon-menu"></i>
-        <span slot="title">系统首页</span>
+        <span slot="title">我的控制台</span>
       </el-menu-item>
 
       <!-- 视频分析-->
@@ -31,28 +31,28 @@
         <span slot="title">图像分析</span>
       </el-menu-item>
 
-      <!-- 上传下载 -->
+      <!-- 文件管理 -->
       <el-menu-item index="/load">
         <i class="el-icon-folder-opened"></i>
-        <span slot="title">上传下载</span>
+        <span slot="title">文件管理</span>
       </el-menu-item>
-
-      <!-- 关于我们 -->
-      <el-menu-item index="/About">
-        <i class="el-icon-info"></i>
-        <span slot="title">关于我们</span>
-      </el-menu-item>
-
+      
       <!-- 个人信息 -->
       <el-menu-item index="/User">
         <i class="el-icon-user-solid"></i>
         <span slot="title">个人信息</span>
       </el-menu-item>
+      
+      <!-- 系统公告 -->
+      <el-menu-item index="/About">
+        <i class="el-icon-info"></i>
+        <span slot="title">系统公告</span>
+      </el-menu-item>
 
-      <!-- 待定功能 -->
+      <!-- 新闻资讯 -->
       <el-menu-item index="/Other">
         <i class="el-icon-more"></i>
-        <span slot="title">待定功能</span>
+        <span slot="title">新闻资讯</span>
       </el-menu-item>
     </el-menu>
   </div>

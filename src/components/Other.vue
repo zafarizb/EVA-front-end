@@ -1,3 +1,3 @@
 <template>
-    <div>待定功能</div>
+    <div>新闻资讯</div>
 </template>
