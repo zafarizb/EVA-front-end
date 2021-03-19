@@ -82,7 +82,7 @@ export default {
   methods: {
     infocheck(index) {
       var name = this.tableData[index].name;
-      this.$router.push("/Page/" + name);//实现对应文件名路由跳转
+      this.$router.push("/Page/" + name); //实现对应文件名路由跳转
     },
     deletePro(index) {
       this.$confirm("确定删除这条任务吗？", {
