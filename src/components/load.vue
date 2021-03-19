@@ -52,7 +52,6 @@
           <el-button type="primary" @click="createPro()">确 定</el-button>
         </div>
       </el-dialog>
-
     </div>
     <div class="form">
       <el-table :data="tableData" height="600" border style="width: 100%">
@@ -79,7 +78,6 @@
         </el-table-column>
       </el-table>
     </div>
-    </div>
   </div>
 </template>
 
@@ -91,11 +89,11 @@ export default {
       tableData: [
         {
           date: "2016-05-03",
-          name: "ttt.zip",
+          name: "ttt",
         },
         {
           date: "2016-05-03",
-          name: "ttt.png",
+          name: "zzz.png",
         },
       ],
       tableOption: [
