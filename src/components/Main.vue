@@ -4,7 +4,7 @@
     <el-row :gutter="20">
       <el-col :span="6">
         <el-card>
-          <img src="../assets/investor.png" class="image">
+          <img src="../assets/user.jpg" class="image">
           <div style="padding: 14px;">
             <span>40%</span>
             <div class="bottom clearfix">
@@ -15,7 +15,7 @@
       </el-col>
       <el-col :span="6">
         <el-card>
-          <img src="../assets/investment.png" class="image">
+          <img src="../assets/pro.jpg" class="image">
           <div style="padding: 14px;">
             <span>3</span>
             <div class="bottom clearfix">
@@ -26,7 +26,7 @@
       </el-col>
       <el-col :span="6">
         <el-card>
-          <img src="../assets/liuliang.png" class="image">
+          <img src="../assets/effience.jpg" class="image">
           <div style="padding: 14px;">
             <span>100%</span>
             <div class="bottom clearfix">
@@ -37,7 +37,7 @@
       </el-col>
       <el-col :span="6">
         <el-card>
-          <img src="../assets/liuliang.png" class="image">
+          <img src="../assets/porpotion.png" class="image">
           <div style="padding: 14px;">
             <span>4.5%</span>
             <div class="bottom clearfix">
