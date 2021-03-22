@@ -28,6 +28,7 @@ export default {
       this.$router.push({ path: "/Video" });
     },
     select() {
+      var _this = this;
       console.log(this.pagenum);
       try {
         this.$axios({
@@ -35,11 +36,12 @@ export default {
           methods: "get", //类型为get请求
           url: "//127.0.0.1:8000/video/getPic", //请求的接口地址
           params: {
+            url: this.$route.path,
             pagenum: this.pagenum,
             userid: sessionStorage.getItem("accessToken"),
           },
         }).then(function (response) {
-          this.picurl = "data:image/jpeg;base64," + response.data;
+          _this.picurl = "data:image/jpeg;base64," + response.data;
         });
       } catch (e) {
         console.error(e);
